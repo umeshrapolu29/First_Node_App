@@ -3,10 +3,15 @@ var express = require('express');
 var cors = require('cors');
 var db = require('./Config/db');
 var { createRegistrationTable } = require('./utils/dbUtils');
+var registrationRouter = require('./Controller/Registration');
+var loginRouter = require('./Controller/login');
 var app = express();
 var port = 3000;
 
 app.use(cors());
+app.use(express.json());
+app.use(loginRouter);
+app.use(registrationRouter);
 
 app.get('/simpleApi', (req,res)=>{
     res.send("This is a simple APIsss response.")
@@ -28,7 +33,7 @@ app.listen(port, async () => {
     try {
         await db.query('SELECT 1');
         console.log('Database connected successfully');
-        await createRegistrationTable();
+        
         console.log('Registration table is ready');
     } catch (error) {
         console.error('Database setup failed:', error.message);
