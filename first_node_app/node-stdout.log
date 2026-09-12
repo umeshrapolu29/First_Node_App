@@ -1,0 +1,5 @@
+Hello, World! This is my first Node.js application.
+◇ injected env (4) from .env // tip: ◈ secrets for agents [www.dotenvx.com]
+Server is running on port 3000
+Database connected successfully
+Registration table is ready
