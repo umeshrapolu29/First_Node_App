@@ -4,7 +4,7 @@ var app = express();
 var port = 3000;
 
 app.get('/simpleApi', (req,res)=>{
-    res.send("This is a simple API response.")
+    res.send("This is a simple APIsss response.")
 });
 // Start the server
 app.listen(port,()=>{
