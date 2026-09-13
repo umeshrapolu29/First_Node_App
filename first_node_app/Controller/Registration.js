@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
 
 	try {
 		await createRegistrationTable();
-        console.log('Received registration data:', { fullName, workEmail, empId, role });
+        console.log('Received registration data is:', { fullName, workEmail, empId, role });
 		const query = `
 			INSERT INTO registration (empId, empName, workEmail, role)
 			VALUES (?, ?, ?, ?)
