@@ -33,7 +33,7 @@ app.listen(port, async () => {
     try {
         await db.query('SELECT 1');
         console.log('Database connected successfully');
-        
+        await createRegistrationTable();
         console.log('Registration table is ready');
     } catch (error) {
         console.error('Database setup failed:', error.message);
