@@ -6,7 +6,7 @@ var { createRegistrationTable } = require('./utils/dbUtils');
 var registrationRouter = require('./Controller/Registration');
 var loginRouter = require('./Controller/login');
 var app = express();
-var port = 3000;
+var port = Number(process.env.PORT || 3000);
 
 app.use(cors());
 app.use(express.json());
