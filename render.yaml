@@ -17,6 +17,6 @@ services:
       - key: DB_PASSWORD
         sync: false
       - key: DB_NAME
-        value: information_schema
+        sync: false
       - key: DB_SSL
         value: "true"
