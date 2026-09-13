@@ -1,6 +1,7 @@
 const express = require('express');
 const db = require('../Config/db');
 const { createRegistrationTable } = require('../utils/dbUtils');
+const { sendRegistrationEmail } = require('../utils/mailer');
 
 const router = express.Router();
 
@@ -30,9 +31,18 @@ router.post('/register', async (req, res) => {
 		}
 		else{
 			await db.query(query, [empId, fullName, workEmail, role]);
+			let emailSent = true;
+
+			try {
+				await sendRegistrationEmail({ fullName, workEmail, empId, role });
+			} catch (emailError) {
+				emailSent = false;
+				console.error('Registration email failed:', emailError.message);
+			}
 
 		res.status(201).json({
-			message: 'Employee registered successfully'
+			message: 'Employee registered successfully',
+			emailSent
 		});
 		}
 		
