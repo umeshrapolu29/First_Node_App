@@ -13,7 +13,7 @@ if (!dbHost) {
 if (!dbName) {
 	throw new Error('DB_NAME is required in production. Configure a writable application database.');
 }
-
+console.log(`DB_HOST: ${dbHost}, DB_NAME: ${dbName}`);
 if (dbName.toLowerCase() === 'information_schema') {
 	throw new Error('DB_NAME must be a writable application database, not information_schema.');
 }
@@ -25,7 +25,7 @@ const pool = mysql.createPool({
 	port: Number(process.env.DB_PORT || 3306),
 	user: 'uelxgeufv8m9spze',
 	password: '4Q3HDKkUUcFxWL4YcJgH',
-	database: 'bd0bexgjuwz55o2u7mkn',
+	database: 'first_node_app',
 	ssl: process.env.DB_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
 	waitForConnections: true,
 	connectionLimit: 10,
