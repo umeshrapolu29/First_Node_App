@@ -36,6 +36,11 @@ app.listen(port, async () => {
         await createRegistrationTable();
         console.log('Registration table is ready');
     } catch (error) {
-        console.error('Database setup failed:', error.message);
+        console.error('Database setup failed:', {
+            message: error.message,
+            code: error.code,
+            errno: error.errno,
+            sqlState: error.sqlState
+        });
     }
 });
