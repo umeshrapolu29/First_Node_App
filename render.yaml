@@ -9,7 +9,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: DB_HOST
-        sync: false
+        value: bd0bexgjuwz55o2u7mkn-mysql.services.clever-cloud.com
       - key: DB_PORT
         value: "3306"
       - key: DB_USER

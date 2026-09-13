@@ -4,16 +4,21 @@ const mysql = require('mysql2/promise');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const dbHost = process.env.DB_HOST || (isProduction ? undefined : 'localhost');
-const dbName = process.env.DB_NAME || 'information_schema ';
-console.log('dbname:', dbName);
+const dbName = process.env.DB_NAME || (isProduction ? undefined : 'first_node_app');
 
 if (!dbHost) {
 	throw new Error('DB_HOST is required in production. Configure the external MySQL host.');
 }
-console.log(`Connecting to database: ${dbName} at host: ${dbHost}`);
+
+if (!dbName) {
+	throw new Error('DB_NAME is required in production. Configure a writable application database.');
+}
+
 if (dbName.toLowerCase() === 'information_schema') {
 	throw new Error('DB_NAME must be a writable application database, not information_schema.');
 }
+
+console.log(`Connecting to database: ${dbName} at host: ${dbHost}`);
 
 const pool = mysql.createPool({
 	host: dbHost,
