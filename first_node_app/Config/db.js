@@ -31,5 +31,5 @@ const pool = mysql.createPool({
 	connectionLimit: 10,
 	queueLimit: 0
 });
-
+console.log(pool, "uuuuu")
 module.exports = pool;
