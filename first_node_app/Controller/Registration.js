@@ -47,7 +47,12 @@ router.post('/register', async (req, res) => {
 		}
 		
 	} catch (error) {
-		console.error('Registration failed:', error.message);
+		console.error('Registration failed:', {
+			message: error.message,
+			code: error.code,
+			errno: error.errno,
+			sqlState: error.sqlState
+		});
 		res.status(500).json({ error: 'Unable to register employee' });
 	}
 });
