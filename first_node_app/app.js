@@ -28,7 +28,7 @@ app.get('/db-status', async (req, res) => {
 
 // Start the server
 app.listen(port, async () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running 1111on port ${port}`);
 
     try {
         await db.query('SELECT 1');
