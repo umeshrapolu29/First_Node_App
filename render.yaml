@@ -17,6 +17,6 @@ services:
       - key: DB_PASSWORD
         sync: false
       - key: DB_NAME
-        sync: false
+        value: first_node_app
       - key: DB_SSL
         value: "true"

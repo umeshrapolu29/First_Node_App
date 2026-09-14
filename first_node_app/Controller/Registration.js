@@ -5,6 +5,16 @@ const { sendRegistrationEmail } = require('../utils/mailer');
 
 const router = express.Router();
 
+router.get('/registrations', async (req, res) => {
+	try {
+		const [rows] = await db.query('SELECT * FROM registration ORDER BY empId');
+		res.status(200).json(rows);
+	} catch (error) {
+		console.error('Fetching registrations failed:', error.message);
+		res.status(500).json({ error: 'Unable to fetch registrations' });
+	}
+});
+
 router.post('/register', async (req, res) => {
 	const { fullName, workEmail, empId, role } = req.body;
    
